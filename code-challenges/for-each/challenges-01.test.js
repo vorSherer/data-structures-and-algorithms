@@ -55,9 +55,11 @@ const removeOne = (num, arr) => {
 };
 
 const removeElements = (arr, callback) => {
+  // let newArr = [];
   // for( let i = 0; i < arr.length; i++) {
-     
-  }
+    // callback(arr[i], arr);
+    // return newArr;
+  // }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +69,7 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+  // arr.forEach()
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,7 +104,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // Solution code here...
+  // let list = [];
+//   availableItems.forEach {
+//     if(availableItems.available === true) {
+//       list.push(availableItems.name);
+//   }
+//   return list;
+// };
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,7 +128,15 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  // arr.forEach() {
+  //   if( value % 15 === 0) {
+  //     arr.push('Fizz Buzz');
+  //   } else if( value % 5 === 0) {
+  //     arr.push('Buzz');
+  //   } else if ( value % 3 === 0) {
+  //     arr.push('Fizz');
+  //   } else arr.push(value);
+  // }
 };
 
 /* ------------------------------------------------------------------------------------------------
