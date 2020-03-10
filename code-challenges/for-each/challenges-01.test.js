@@ -32,7 +32,7 @@ const addValues = (arr, value) => arr.push(value);
 
 const addNumbers = (num, arr, times, callback) => {
   for (let i = 0; i < times; i++) {
-    return callback(arr, num);
+    callback(arr, num);
   };
   return arr;
 };
@@ -69,10 +69,10 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // arr.forEach(value) => {
-  //   callback(value, arr);
-  // };
-  // return arr
+  arr.forEach((value) => {
+    callback(value, arr);
+  });
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -112,13 +112,13 @@ This function should use forEach to populate your grocery list based on the stor
 ------------------------------------------------------------------------------------------------ */
 
 const createList = (availableItems) => {
-  // let list = [];
-  // availableItems.forEach((fruit) => {
-  //   if (fruit.available === true) {
-  //     list.push(fruit.name);
-  //   };
-  // }
-  // return list;
+  let list = [];
+  availableItems.forEach((fruit) => {
+    if (fruit.available) {
+      list.push(fruit.name);
+    };
+  });
+  return list;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -168,7 +168,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the number 8 to the array five times', () => {
     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
@@ -182,7 +182,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should remove three elements from the array', () => {
     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
     expect(removeWithForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
@@ -196,7 +196,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
