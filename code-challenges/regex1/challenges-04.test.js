@@ -24,7 +24,7 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  str.match(/A-Z/g);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,7 +34,10 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  if(arr.forEach(/[A-J]/gm) {
+      arr.push([i]);
+      console.log(arr);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,7 +127,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
