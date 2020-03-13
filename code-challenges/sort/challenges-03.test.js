@@ -37,16 +37,16 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-    arr.sort(( a, b ) => {
-        if (a.toLowerCase() < b.toLowerCase()){
-          return -1;
-        } else if (a.toLowerCase() > b.toLowerCase()){
-          return  1;
-        } else {
-          return 0;
-        }
-    });
-    return arr
+  arr.sort(( a, b ) => {
+    if (a.toLowerCase() < b.toLowerCase()) {
+      return -1;
+    } else if (a.toLowerCase() > b.toLowerCase()) {
+      return  1;
+    } else {
+      return 0;
+    }
+  });
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -93,7 +93,16 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  arr.sort(( a, b ) => {
+    if (a.lastName < b.lastName) {
+      return -1;
+    } else if (a.lastName > b.lastName) {
+      return  1;
+    } else {
+      return 0;
+    }
+  });
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,7 +116,34 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  arr.sort(( a, b ) => {
+    if(a.lastName === b.lastName && a.firstName === b.firstName) {
+      if( a.age > b.age) {
+        return 1;
+      }
+      if( a.age < b.age) {
+        return -1;
+      }
+      return 0;
+    } else if(a.lastName === b.lastName) {
+      if(a.firstName > b.firstName) {
+        return 1;
+      }
+      if(a.firstName < b.firstName) {
+        return -1;
+      }
+      return 0;
+    } else {
+      if(a.lastName > b.lastName) {
+        return 1;
+      }
+      if(a.lastName < b.lastName) {
+        return  -1;
+      }
+      return 0;
+    }
+  });
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -223,7 +259,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -235,7 +271,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
