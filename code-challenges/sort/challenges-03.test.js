@@ -18,7 +18,10 @@ In this alphabetization, capital letters come before lower case letters.
 For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
-const alphabetize = (arr) => arr.sort();
+// const alphabetize = (arr) => arr.sort();
+const alphabetize = arr => {
+  return arr.sort();
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -74,6 +77,16 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => arr.sort(( a, b ) => a.toString().length - b.toString().length);
 
+// Alt colution using ternery:
+// const sortNumbersByLength = (arr) => {
+// 	arr.sort(( a, b ) => {
+// 		if (a.toString().length !== b.toString().length) {
+// 			return a.toString().length > b.toString().length ? 1 : -1
+// 		}
+// 	});
+// 	return arr;
+// };
+
 /*-----------------------------------------------------------------------------------------------
 CHALLENGE 7
 
@@ -104,6 +117,14 @@ const sortPeople = (arr) => {
   });
   return arr
 };
+
+// Alt solution using ternery:
+// const sortPeople = (arr) => {
+//   arr.sort(( a, b ) => {
+//     return a.lastName < b.lastName ? 1 : -1;
+//   });
+//   return arr
+// };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8
@@ -146,6 +167,19 @@ const sortPeopleBetter = (arr) => {
   return arr
 };
 
+// Alt solution using ternery:
+// arr.sort(( a, b ) => {
+// 	if(a.lastName !== b.lastName) {
+// 	return a.lastName > b.lastName ? 1 : -1;
+// 	}
+// 	esle if ( a.lastName !== b.lastName) {
+// 		return a.firstName > b.firstName ? 1 : -1;
+// 	{ else if( a.age !== b.age;
+// 	}
+//   });
+//   return arr
+// };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 9 - Stretch Goal
 
@@ -171,6 +205,7 @@ const meetings = [
 const sortMeetingsByDay = (arr) => {
   // Solution code here...
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal

@@ -12,7 +12,11 @@ For example:
 'hello world' returns false
 ------------------------------------------------------------------------------------------------ */
 
-const isNum = (input) => (/[0-9]+![a-zA-Z]/gm);
+// const isNum = (input) => {
+// 	return input.toString().match (/\d/) ? 1 : 0;
+// };
+
+const isNum = input => input.toString().match (/\d/) ? 1 : 0;
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,9 +27,18 @@ Write a function named isCapitalized that takes in a string. This function shoul
 Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
-const isCapitalized = (str) => {
-  str.match(/A-Z/g);
+const isCapitalized = str => {
+  const arr = str.match(/([A-Z][a-z]*)/g);
+  return arr || [];
 };
+
+// Lena's solution************
+// const isCapitalized = (str) => {
+// 	let capitalizationPattern = /([A-Z][a-z]*)/g;
+// 	let capitals = str.match(capitalizationPattern);
+// 	return capitals || [];
+// };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -33,12 +46,30 @@ CHALLENGE 3
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
-const citiesAtoJ = (arr) => {
-  if(arr.forEach(/[A-J]/gm) {
-      arr.push([i]);
-      console.log(arr);
+const citiesAtoJ = arr => {
+  const regexPattern = /^[A-J]/;
+  const newArr = [];
+  arr.forEach(city => {
+    if(regexPattern.test(city) === true){
+      newArr.push(city);
+    };
   });
+  return newArr;
 };
+
+// Lena's solution************
+// const citiesAtoJ = (arr) => {
+//   //<solution>
+//   const cityPattern = /^[A-J]/;
+//   const results = [];
+//   arr.forEach(city => {
+//     if(cityPattern.test(city)) results.push(city);
+//     //else if() return logic
+//   });
+//   return results;
+//   //</solution>
+// };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -52,8 +83,10 @@ If the user enters any of these four inputs, return true. For any other input, r
 Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
+// This fails:
 const matchMonth = (input) => {
-  // Solution code here...
+  // input.toString().test( /\b(O|o)ct(ober)?/g );
+  return input.toString().test( /\boct(ober)?/gi );
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +100,8 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  const arr = str.match(/\b[a-zA-Z0-9]*\s/g);
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -140,7 +174,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {
@@ -156,7 +190,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
@@ -174,7 +208,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
   test('It should only return words that are immediately followed by a space', () => {
