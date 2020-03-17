@@ -86,9 +86,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i].name === character) {
+          return Object.values(arr[i])[2].length > 0;
+        }
+    }  
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -99,8 +103,13 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i].name === character) {
+          return Object.entries(arr[i])[2][1].length > 0;
+        }
+    }
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -176,7 +185,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });
@@ -186,7 +195,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenEntries(characters, 'Eddard')).toBeTruthy();
   });
