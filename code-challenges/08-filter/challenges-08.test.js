@@ -25,9 +25,7 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 ------------------------------------------------------------------------------------------------ */
 
 
-const filterStringsWithVowels = (arr) => {
-  // Solution code here...
-};
+const filterStringsWithVowels = (arr) => arr.filter( value => /[aeiou]/gmi.test(value));
 
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,9 +36,8 @@ Write a function named notInFirstArray that, given two arrays as input, uses fil
 For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
-const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
-};
+const notInFirstArray = (forbiddenValues, arr) => arr.filter( value => !forbiddenValues.includes(value));
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -81,9 +78,8 @@ const snorlaxData = {
   weight: 4600,
 };
 
-const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
-};
+const getBaseStatGreaterThan = (arr, minBaseStat) => arr.filter( obj => obj.baseStat > minBaseStat);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -93,9 +89,9 @@ Write a function named getStatName that is an extension of your getBaseStatGreat
 For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 'special-attack'].
 ------------------------------------------------------------------------------------------------ */
 
-const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
-};
+// ****************************** LINTER ERROR **************************
+// const getStatName = (arr, minBaseStat) => arr.filter( obj.stat.name => obj.baseStat > minBaseStat);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -182,7 +178,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array containing only words that have vowels', () => {
     expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
     expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
@@ -195,7 +191,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   const firstNums = [1, 2, 3];
   const secondNums = [1, 2, 3, 4];
 
@@ -219,7 +215,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return an array containing the stats that are greater than the input', () => {
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75)).toStrictEqual([ { stat: { url: 'https://pokeapi.co/api/v2/stat/5/', name: 'special-defense' }, effort: 2, baseStat: 110 } ]);
     expect(getBaseStatGreaterThan(snorlaxData.stats, 75).length).toStrictEqual(1);
