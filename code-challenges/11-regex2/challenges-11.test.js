@@ -8,9 +8,7 @@ Write a function named validatePin that uses a regular expression pattern to val
 If the PIN is four numerical digits long, return true. Otherwise, return false.
 ------------------------------------------------------------------------------------------------ */
 
-const validatePin = (pin) => {
-  // Solution code here...
-};
+const validatePin = (pin) => /^\d{4}$/.test(pin);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -29,7 +27,7 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  // Solution code here...
+//   let regex = /\w[a-zA-Z0-9]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[.net|.com|.org]
 };
 
 /* ------------------------------------------------------------------------------------------------
