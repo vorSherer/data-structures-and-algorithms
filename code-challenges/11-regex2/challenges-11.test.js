@@ -26,7 +26,9 @@ Return either true or false.
 Note: if you ever need to validate an email using a regex in practice, the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
 
-const validateEmail = (email) => /(^[a-z0-9]+[.])*[a-z0-9]+@[a-z0-9]+\.com\b|\.net\b|\.org\b/gi.test(email);
+const validateEmail = (email) => /^[a-z0-9]+\.?[a-z0-9]+?@[a-z0-9]+.(net|com|org)$/gi.test(email);
+// ALT Solution #1:   /^[a-z0-9]+\.?[a-z0-9]+?@[a-z0-9]+\.com\b|\.net\b|\.org\b/gi.test(email);
+// ALT Solution #2:   /^\w+[\w||.]\w+@\w*.[nco][eor][tmg]$/.test(email);
 
 
 /* ------------------------------------------------------------------------------------------------
