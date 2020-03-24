@@ -26,9 +26,8 @@ Return either true or false.
 Note: if you ever need to validate an email using a regex in practice, the Internet has the actual regex you should use. It's many many lines long.
 ------------------------------------------------------------------------------------------------ */
 
-const validateEmail = (email) => {
-//   let regex = /\w[a-zA-Z0-9]*[a-zA-Z0-9]+@[a-zA-Z0-9]+[.net|.com|.org]
-};
+const validateEmail = (email) => /(^[a-z0-9]+[.])*[a-z0-9]+@[a-z0-9]+\.com\b|\.net\b|\.org\b/gi.test(email);
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -52,8 +51,10 @@ Return either true or false.
 ------------------------------------------------------------------------------------------------ */
 
 const validatePhoneNumber = (phoneNumber) => {
-  // Solution code here...
+    const telFormat = /^(\(\d{3}\)|\d{3})[-.\s]?\d{3}[-.\s]?\d{4}$/g;
+    return phoneNumber.match(telFormat);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 - Stretch Goal
@@ -65,8 +66,10 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  // Solution code here...
+    const regex = /\s?\/[a-z0-9]{1,10}>/g;
+    return elements.match(regex);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
@@ -91,7 +94,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should match a basic email', () => {
     expect(validateEmail('joe@codefellows.com')).toBeTruthy();
   });
@@ -121,7 +124,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should match the acceptable phone number formats', () => {
     expect(validatePhoneNumber('(555) 555-5555')).toBeTruthy();
     expect(validatePhoneNumber('555 555-5555')).toBeTruthy();
@@ -145,7 +148,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the closing tags', () => {
     expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual([ '/h1', '/p' ]);
   });
