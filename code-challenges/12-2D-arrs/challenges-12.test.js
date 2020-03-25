@@ -23,9 +23,18 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+    const arrOne = firstPike;
+    const arrTwo = seaTac;
+    const arrThree = seattleCenter;
+    const arrFour = capHill;
+    const arrFive = alkiBeach;
+    const result = [];
+    for( let i = 0; i < 12; i++) {
+        result.push(arrOne[i] + arrTwo[i] + arrThree[i] + arrFour[i] + arrFive[i]);
+    }
+    return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,8 +47,14 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let result = data.map(function(row) {
+      return row.reduce(function(result, val, idx) {
+          result[hours[idx]] = val;
+          return result;
+      }, {});
+  })
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -60,8 +75,14 @@ const errands = [
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  for( let i = 0; i < arr.length; i++) {
+    for( let j = 0; j < arr[i].length; j++) {
+        if( arr[i].items[j] === 'Treats') 
+        return arr[i].items[j].quantity;
+        }
+    }
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -81,9 +102,8 @@ Here is a sample board:
 The top row of the board is considered row zero and row numbers increase as they go down.
 ------------------------------------------------------------------------------------------------ */
 
-const battleship = (board, row, col) => {
-  //  Solution code here...
-};
+const battleship = (board, row, col) => if( board[row[col]] === '#') ? "hit" : "miss";
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -172,7 +192,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should create an object of data for each store', () => {
     expect(salesData(hoursOpen, grandTotal(cookieStores))).toStrictEqual([
       { sales: '88 cookies', time: '9 a.m.' },
@@ -194,13 +214,13 @@ xdescribe('Testing challenge 2', () => {
 });
 
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return the number 24', () => {
     expect(howManyTreats(errands)).toStrictEqual(24);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const battleshipData = [
     ['#', ' ', '#', ' '],
     ['#', ' ', '#', ' '],
